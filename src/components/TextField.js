@@ -27,7 +27,7 @@ const TextField = props => {
   return (
     <CssTextField
       style={style}
-      label="Type your task here"
+      label="Type your task here..."
       value={value}
       margin="normal"
       multiline

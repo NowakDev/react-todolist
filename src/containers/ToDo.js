@@ -13,15 +13,17 @@ const styles = {
     margin: 'auto',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
-    padding: '20px',
-    width: '80%'
+    paddingTop: 5,
+    minHeight: '97vh',
+    width: '96%',
+    maxWidth: 1000
   },
   div: {
     alignItems: 'center',
     display: 'flex',
+    flexWrap: document.body.clientWidth < 500 ? 'wrap' : '',
     justifyContent: 'center',
-    width: '80%'
+    width: '90%'
   },
   textField: {
     borderColor: 'orange',
@@ -29,11 +31,11 @@ const styles = {
     width: '100%'
   },
   span: {
-    fontSize: 60,
+    fontSize: 50,
     color: 'orange'
   },
   listDiv: {
-    width: '80%',
+    width: '90%',
     marginTop: 50
   }
 }
@@ -65,21 +67,28 @@ class ToDo extends React.Component {
     }
   }
 
-  onTaskCheck = () => {
+  toggleDoneTask = (task, index) => {
     const { tasks } = this.state
+    const checked = tasks.filter(elem => elem === task)
+    checked[0].done = !checked[0].done
+    this.setState({
+      tasks: [...tasks]
+    }, () => console.log(this.state)
+    )
   }
 
   render() {
+
     const { task, tasks } = this.state
     const { box, div, textField, span, listDiv } = styles
-    console.log(this.state)
+
     return (
       <Box style={box} boxShadow={3}>
         <Typography variant='h4'>
           Your
         <span style={span}>
-            To-Do
-        </span>
+            <strong>To-Do</strong>
+          </span>
           List
         </Typography>
         <div style={div}>
@@ -93,7 +102,7 @@ class ToDo extends React.Component {
         <div style={listDiv}>
           <List
             tasks={tasks}
-            onTaskCheck={this.onTaskCheck}
+            toggleDoneTask={this.toggleDoneTask}
           />
         </div>
       </Box>

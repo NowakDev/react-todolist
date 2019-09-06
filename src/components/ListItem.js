@@ -6,32 +6,38 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
-import Divider from '@material-ui/core/Divider'
 
-const styles = {
-  divider: {
-    height: 28,
-    margin: '4px 10px',
-  }
-}
 
 const ListItem = props => {
-  const { handleToggle, onChange, task } = props
+  const { index, onChange, task } = props
+  const styles = {
+    listItem: {
+      margin: '5px 0px',
+      borderRadius: '5px',
+      borderBottom: '1px solid gray',
+      backgroundColor: task.done ? '#b6fcd5' : null
+    }
+  }
+
   return (
-    <MUIListItem style={{ border: '1px solid black', width: '100%', margin: '5px' }} onClick={handleToggle}>
-      <ListItemIcon>
-        <IconButton aria-label="comments">
-          <EditIcon />
-        </IconButton>
-      </ListItemIcon>
-      <Divider style={styles.divider} orientation='vertical' />
+    <MUIListItem
+      dense
+      style={styles.listItem}
+    >
       <ListItemText primary={task.text} secondary={task.timeStamp} />
-      <Divider style={styles.divider} orientation='vertical' />
-      <ListItemIcon>
-        <Checkbox
-          onChange={onChange}
-        />
-      </ListItemIcon>
+      <div style={{ alignItems: 'center', display: 'flex', flexFlow: 'column', width: 48 }}>
+        <ListItemIcon style={{ minWidth: 48 }}>
+          <IconButton>
+            <EditIcon />
+          </IconButton>
+        </ListItemIcon>
+        <ListItemIcon style={{ minWidth: 42 }}>
+          <Checkbox
+            onChange={() => onChange(task, index)}
+            checked={task.done}
+          />
+        </ListItemIcon>
+      </div>
     </MUIListItem>
   )
 }

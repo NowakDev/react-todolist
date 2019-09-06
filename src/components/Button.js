@@ -10,7 +10,11 @@ const styles = {
 const Button = props => {
   const { handleOnClick } = props
   return (
-    <Fab style={styles} onClick={handleOnClick}>
+    <Fab
+      style={styles}
+      onClick={handleOnClick}
+      size={document.body.clientWidth < 500 ? 'medium' : 'large'}
+    >
       <AddIcon />
     </Fab>
   )
