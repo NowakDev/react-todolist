@@ -35,8 +35,9 @@ const styles = {
     color: 'orange'
   },
   listDiv: {
+    marginTop: 20,
+    textAlign: 'center',
     width: '90%',
-    marginTop: 50
   }
 }
 
@@ -100,6 +101,7 @@ class ToDo extends React.Component {
           <Button handleOnClick={this.handleOnClick} />
         </div>
         <div style={listDiv}>
+          <Typography style={{ margin: 'auto' }} variant='h5'>List of your tasks:</Typography>
           <List
             tasks={tasks}
             toggleDoneTask={this.toggleDoneTask}

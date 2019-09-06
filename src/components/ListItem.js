@@ -15,7 +15,7 @@ const ListItem = props => {
       margin: '5px 0px',
       borderRadius: '5px',
       borderBottom: '1px solid gray',
-      backgroundColor: task.done ? '#b6fcd5' : null
+      backgroundColor: task.done ? '#b6fcd5' : null,
     }
   }
 
