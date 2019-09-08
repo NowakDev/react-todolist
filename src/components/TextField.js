@@ -11,6 +11,8 @@ const CssTextField = withStyles({
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
         borderColor: 'black',
+        borderRadius: 30,
+        margin: 5
       },
       '&:hover fieldset': {
         borderColor: 'orange',
@@ -27,9 +29,9 @@ const TextField = props => {
   return (
     <CssTextField
       style={style}
+      autoFocus={true}
       label="Type your task here..."
       value={value}
-      margin="normal"
       multiline
       onChange={handleChange}
       variant="outlined"

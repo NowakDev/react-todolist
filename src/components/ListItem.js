@@ -13,9 +13,8 @@ const ListItem = props => {
   const styles = {
     listItem: {
       margin: '5px 0px',
-      borderRadius: '5px',
-      borderBottom: '1px solid gray',
-      backgroundColor: task.done ? '#b6fcd5' : null,
+      borderRadius: 5,
+      backgroundColor: task.done ? '#c8df99' : '#eeeeee',
     }
   }
 
@@ -24,14 +23,22 @@ const ListItem = props => {
       dense
       style={styles.listItem}
     >
-      <ListItemText primary={task.text} secondary={task.timeStamp} />
-      <div style={{ alignItems: 'center', display: 'flex', flexFlow: 'column', width: 48 }}>
-        <ListItemIcon style={{ minWidth: 48 }}>
+      <ListItemText
+        primary={task.text}
+        secondary={task.timeStamp}
+      />
+      <div
+        style={{ alignItems: 'center', display: 'flex', flexFlow: 'column', width: 48 }}
+      >
+        <ListItemIcon
+          style={{ minWidth: 48 }}>
           <IconButton>
             <EditIcon />
           </IconButton>
         </ListItemIcon>
-        <ListItemIcon style={{ minWidth: 42 }}>
+        <ListItemIcon
+          style={{ minWidth: 42 }}
+        >
           <Checkbox
             onChange={() => onChange(task, index)}
             checked={task.done}
